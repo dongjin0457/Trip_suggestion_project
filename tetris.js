@@ -1,5 +1,4 @@
-//
-//동지니 테스트
+//잉
 const grid = document.getElementById("tetris");
 const nextBlockGrid = document.getElementById("next-block");
 const rows = 20;
