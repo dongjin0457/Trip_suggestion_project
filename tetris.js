@@ -1,3 +1,4 @@
+// 테스트 주석 하나더
 // 테스트 주정
 const grid = document.getElementById("tetris");
 const nextBlockGrid = document.getElementById("next-block");
