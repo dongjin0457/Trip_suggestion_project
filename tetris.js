@@ -1,3 +1,4 @@
+// 테스트 주정
 const grid = document.getElementById("tetris");
 const nextBlockGrid = document.getElementById("next-block");
 const rows = 20;
@@ -86,10 +87,7 @@ function drawTetromino(tetromino, row, col, container = grid) {
     tetromino.forEach((r, rowIndex) => {
         r.forEach((cell, colIndex) => {
             if (cell) {
-                const gridCell =
-                    container.children[
-                        (row + rowIndex) * cols + (col + colIndex)
-                    ];
+                const gridCell = container.children[(row + rowIndex) * cols + (col + colIndex)];
                 gridCell.classList.add("active");
             }
         });
@@ -101,10 +99,7 @@ function clearTetromino(tetromino, row, col, container = grid) {
     tetromino.forEach((r, rowIndex) => {
         r.forEach((cell, colIndex) => {
             if (cell) {
-                const gridCell =
-                    container.children[
-                        (row + rowIndex) * cols + (col + colIndex)
-                    ];
+                const gridCell = container.children[(row + rowIndex) * cols + (col + colIndex)];
                 gridCell.classList.remove("active");
             }
         });
@@ -115,13 +110,7 @@ function clearTetromino(tetromino, row, col, container = grid) {
 function checkCollision(tetromino, row, col) {
     for (let r = 0; r < tetromino.length; r++) {
         for (let c = 0; c < tetromino[r].length; c++) {
-            if (
-                tetromino[r][c] &&
-                (row + r >= rows ||
-                    col + c < 0 ||
-                    col + c >= cols ||
-                    board[row + r][col + c])
-            ) {
+            if (tetromino[r][c] && (row + r >= rows || col + c < 0 || col + c >= cols || board[row + r][col + c])) {
                 return true;
             }
         }
@@ -200,9 +189,7 @@ function rotate(direction) {
     const rotatedTetromino =
         direction === "left"
             ? rotateTetromino(currentTetromino)
-            : rotateTetromino(
-                  rotateTetromino(rotateTetromino(currentTetromino))
-              ); // 오른쪽 회전은 3번 회전
+            : rotateTetromino(rotateTetromino(rotateTetromino(currentTetromino))); // 오른쪽 회전은 3번 회전
     clearTetromino(currentTetromino, currentRow, currentCol);
     if (!checkCollision(rotatedTetromino, currentRow, currentCol)) {
         currentTetromino = rotatedTetromino;
